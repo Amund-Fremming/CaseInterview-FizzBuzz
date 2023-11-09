@@ -21,14 +21,9 @@ The following tree structure gives a basic overview of the FizzBuzz program.
 
 <pre>
 📦src
- ┣ 📂components # The components made for the app
- ┣ 📂CustomHooks # The custom made React hooks
- ┣ 📂lib # Contains mock files and text data for translation
- ┣ 📂pages # The pages that can be viewed by users (admin page requires authentication)
- ┣ 📂sass # All mixins and variables to be used for consistent styling
- ┣ 📂services # Service files (for API communication, admin authentication etc.)
- ┃ ┣ 📂ApiManager # Defines how the frontend should communicate with the API to get data
- ┣ 📂utils # Contains utility functions
+ ┣ 📂Factory # SKRIV NOE SMART HER
+ ┣ 📂Interface # Contains all interfaces for the app.
+ ┣ 📂Rules # Contains all classes that define rules for the app. 
  ... etc.
 </pre>
 <br/>
