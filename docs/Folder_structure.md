@@ -2,24 +2,28 @@
 FizzBuzz/
 │
 ├── src/
-│   ├── Rules
+│   ├── Rules/
 │   │   ├── OddNumberRule.cs
 │   │   ├── PrimeNumberRule.cs
 │   │   └── ....
 │   │
-│   ├── Factory
+│   ├── Factory/
 │   │   └── RuleFactory.cs
+│   │
+│   ├── Interface/
+│   │   └── IFizzBuzzRule.cs
+│   │
 │   │
 │   └── Program.cs
 │
-├── tests/
+├── Tests/
 │   ├── StrategyTests/
 │   └── EngineTests/
 │
-├── config/
+├── Config/
 │   └── rules.json
 │
-├── docs
+├── Docs/
 │   ├── Folder_structure.md
 │   └── Backend_overview.md
 │
