@@ -29,3 +29,28 @@ FizzBuzz/
 │
 └── .gitignore
 ```
+
+```txt
+FizzBuzzSolution/
+│
+├── src/
+│   ├── GameLogic/
+│   │   ├── GameLogic.cs
+│   │   └── Rule.cs
+│   │
+│   ├── Configuration/
+│   │   ├── RulesConfigurator.cs
+│   │   └── rules.json
+│   │
+│   └── Program.cs
+│
+├── tests/
+│   ├── FizzBuzzEngine.Tests/
+│   │   ├── RuleEngineTests.cs
+│   │   └── RuleTests.cs
+│   │
+│   └── Configuration.Tests/
+│       └── RulesConfiguratorTests.cs
+│
+└── .gitignore
+```

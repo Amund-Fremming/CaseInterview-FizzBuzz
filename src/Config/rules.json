@@ -1,0 +1,16 @@
+{
+  "rules": [
+    {
+      "divisor": 15,
+      "response": "FizzBuzz"
+    },
+    {
+      "divisor": 3,
+      "response": "Fizz"
+    },
+    {
+      "divisor": 5,
+      "response": "Buzz"
+    }
+  ]
+}
