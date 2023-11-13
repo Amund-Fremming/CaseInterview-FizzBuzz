@@ -1,7 +1,7 @@
 using System;
 using Interface;
 
-namespace GameLogic;
+namespace Game;
 
 public class Rule : IRule {
 

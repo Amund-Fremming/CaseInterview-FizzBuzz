@@ -8,6 +8,9 @@ namespace Interface;
 /// </summary>
 public interface IRule
 {
+    int Divisor { get; }
+    string Response { get; }
+
     /// <summary>
     /// Returns true if the given number matches the methods condition (Rule).
     /// </summary>

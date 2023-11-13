@@ -11,6 +11,10 @@
     {
       "divisor": 5,
       "response": "Buzz"
+    },
+    {
+      "divisor": 7,
+      "response": "Kizz"
     }
   ]
 }

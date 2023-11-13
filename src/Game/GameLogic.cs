@@ -1,14 +1,13 @@
 using System;
 using Interface;
-using GameLogic;
 
-namespace GameLogic;
+namespace Game;
 
 public class GameLogic : IGameLogic {
 
-    private readonly List<Rule> _rules;
+    private readonly List<IRule> _rules;
 
-    public GameLogic(List<Rule> rules)
+    public GameLogic(List<IRule> rules)
     {
         _rules = rules ?? throw new ArgumentNullException(nameof(rules));
     }
