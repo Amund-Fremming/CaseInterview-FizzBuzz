@@ -1,7 +1,6 @@
-﻿using System;
-using Configuration;
-using Game;
+﻿using Game;
 using Interface;
+using Configuration;
 
 public class Program
 {
@@ -9,8 +8,8 @@ public class Program
     {
         string configPath = "./Configuration/rules.json";
         
-        RulesConfiguration rulesConfiguration = new RulesConfiguration();
-        List<IRule> rules = rulesConfiguration.LoadRules(configPath);
+        IRulesConfigurator rulesConfigurator = new Configuration.RulesConfigurator();
+        List<IRule> rules = rulesConfigurator.LoadRules(configPath);
 
         GameLogic gameLogic = new GameLogic(rules);
 

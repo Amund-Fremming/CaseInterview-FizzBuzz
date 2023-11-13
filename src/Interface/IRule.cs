@@ -3,8 +3,8 @@ using System;
 namespace Interface;
 
 /// <summary>
-/// Defines a rule for determing if a number meets a certain condition
-/// Produces a string as output for the number if the condition is met
+/// Represents a rule in a numeric evaluation game like FizzBuzz.
+/// A rule associates a divisor with a specific response string.
 /// </summary>
 public interface IRule
 {
@@ -12,17 +12,9 @@ public interface IRule
     string Response { get; }
 
     /// <summary>
-    /// Returns true if the given number matches the methods condition (Rule).
+    /// Determines whether a given number is divisible by the rule's divisor.
     /// </summary>
-    /// <param name="number">The Integer for testing if the condition is met</param>
-    /// <returns>
+    /// <param name="number">The number to test against the rule's divisor.</param>
+    /// <returns>True if the number is divisible by the divisor; otherwise, false.</returns>
     bool DivisibleBy(int number);
-    
-    /// <summary>
-    /// Produces a string as output for the rule.
-    /// Made for returning a string when the DivisibleBy condition is met.
-    /// </summary>
-    /// <returns> A string as output for the rule
-    
-    /* string GetResponse(); */
 }
