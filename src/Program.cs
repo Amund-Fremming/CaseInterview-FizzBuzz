@@ -1,7 +1,7 @@
-using System;
+﻿using System;
 
 namespace Main;
-class Prorgam
+class Program
 {
     static void Main(string[] args)
     {
