@@ -1,40 +1,8 @@
 ```txt
-FizzBuzz/
-│
-├── src/
-│   ├── Rules/
-│   │   ├── OddNumberRule.cs
-│   │   ├── PrimeNumberRule.cs
-│   │   └── ....
-│   │
-│   ├── Factory/
-│   │   └── RuleFactory.cs
-│   │
-│   ├── Interface/
-│   │   └── IFizzBuzzRule.cs
-│   │
-│   │
-│   └── Program.cs
-│
-├── Tests/
-│   ├── StrategyTests/
-│   └── EngineTests/
-│
-├── Config/
-│   └── rules.json
-│
-├── Docs/
-│   ├── Folder_structure.md
-│   └── Backend_overview.md
-│
-└── .gitignore
-```
-
-```txt
 FizzBuzzSolution/
 │
 ├── src/
-│   ├── GameLogic/
+│   ├── Game/
 │   │   ├── GameLogic.cs
 │   │   └── Rule.cs
 │   │
@@ -42,15 +10,24 @@ FizzBuzzSolution/
 │   │   ├── RulesConfigurator.cs
 │   │   └── rules.json
 │   │
+│   ├── Interface/
+│   │   ├── IGameLogic.cs
+│   │   ├── IRule.cs
+│   │   └── IRulesConfigurator.cs
+│   │
 │   └── Program.cs
 │
-├── tests/
-│   ├── FizzBuzzEngine.Tests/
-│   │   ├── RuleEngineTests.cs
-│   │   └── RuleTests.cs
+├── Tests/
+│   ├── Game.Tests/
+│   │   ├── GameLogicTest.cs
+│   │   └── RuleTest.cs
 │   │
 │   └── Configuration.Tests/
 │       └── RulesConfiguratorTests.cs
+│
+├── Docs
+│   ├── Backend_overview.md
+│   └── Folder_structure
 │
 └── .gitignore
 ```
