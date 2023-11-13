@@ -6,7 +6,7 @@ namespace Configuration;
 
 public class RulesConfigurator : IRulesConfigurator
 {
-    public List<IRule> LoadRules(string configPath) {
+    public List<IRule> LoadRules(string configPath, string ruleset) {
         List<IRule> rules = new List<IRule>();
         
         try
@@ -14,7 +14,7 @@ public class RulesConfigurator : IRulesConfigurator
             string jsonString = File.ReadAllText(configPath);
 
             JObject jObject = JObject.Parse(jsonString);
-            JArray rulesArray = (JArray)jObject["rules"];
+            JArray rulesArray = (JArray)jObject[ruleset];
             
             foreach(JObject rule in rulesArray)
             {

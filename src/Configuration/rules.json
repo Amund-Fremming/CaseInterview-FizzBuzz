@@ -1,5 +1,5 @@
 {
-  "rules": [
+  "ruleset1": [
     {
       "divisor": 15,
       "response": "FizzBuzz"
@@ -11,10 +11,20 @@
     {
       "divisor": 5,
       "response": "Buzz"
+    }
+  ],
+  "ruleset2": [
+    {
+      "divisor": 36,
+      "response": "JazzFuzz"
     },
     {
-      "divisor": 7,
-      "response": "Kizz"
+      "divisor": 9,
+      "response": "Jazz"
+    },
+    {
+      "divisor": 4,
+      "response": "Fuzz"
     }
   ]
 }

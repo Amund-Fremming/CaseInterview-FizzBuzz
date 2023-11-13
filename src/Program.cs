@@ -6,24 +6,29 @@ public class Program
 {
     static void Main(string[] args)
     {
-        string configPath = "./Configuration/rules.json";
-        
+        const string configPath = "./Configuration/rules.json";
+
+        /* GAME ONE */
+        // Mulig endre til statisk???
         IRulesConfigurator rulesConfigurator = new Configuration.RulesConfigurator();
-        List<IRule> rules = rulesConfigurator.LoadRules(configPath);
+        
+        List<IRule> gameOneRules = rulesConfigurator.LoadRules(configPath, "ruleset2");
+        GameLogic gameOneLogic = new GameLogic(gameOneRules);
 
-        GameLogic gameLogic = new GameLogic(rules);
-
-        for(int i = 1; i <= 100; i++)
+        for(int i = 1; i <= 1000; i++)
         {
-            string response = gameLogic.ApplyRules(i);
+            string response = gameOneLogic.ApplyRules(i);
             Console.WriteLine(response);
         }
 
+        /* GAME TWO */
+        List<IRule> gameTwoRules = rulesConfigurator.LoadRules(configPath, "ruleset2");
+        GameLogic gameTwoLogic = new GameLogic(gameTwoRules);
+   
         for(int i = 100; i > 0; i--)
         {
-            string response = gameLogic.ApplyRules(i);
+            string response = gameTwoLogic.ApplyRules(i);
             Console.WriteLine(response);
         }
-
     }
 }
