@@ -9,7 +9,7 @@ public class Program
         const string configPath = "./Configuration/rules.json";
 
         /* GAME ONE */
-        IRulesConfigurator rulesConfigurator = new Configuration.RulesConfigurator();
+        IRulesConfigurator rulesConfigurator = new RulesConfigurator();
         
         List<IRule> gameOneRules = rulesConfigurator.LoadRules(configPath, "ruleset1");
         GameLogic gameOneLogic = new GameLogic(gameOneRules);
