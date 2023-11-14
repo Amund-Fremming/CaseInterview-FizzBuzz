@@ -18,11 +18,11 @@ FizzBuzzSolution/
 │   └── Program.cs
 │
 ├── Tests/
-│   ├── Game.Tests/
+│   ├── Game.test/
 │   │   ├── GameLogicTest.cs
 │   │   └── RuleTest.cs
 │   │
-│   └── Configuration.Tests/
+│   └── Configuration.test/
 │       └── RulesConfiguratorTests.cs
 │
 ├── Docs

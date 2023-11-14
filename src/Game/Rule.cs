@@ -1,4 +1,3 @@
-using System;
 using Interface;
 
 namespace Game;
@@ -10,7 +9,7 @@ public class Rule : IRule {
 
     public Rule(int divisor, string response) {
         this.Divisor = divisor;
-        this.Response = response ?? throw new ArgumentNullException(nameof(response));
+        this.Response = response;
     }
 
     public bool DivisibleBy(int number) {

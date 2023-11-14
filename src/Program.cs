@@ -9,13 +9,12 @@ public class Program
         const string configPath = "./Configuration/rules.json";
 
         /* GAME ONE */
-        // Mulig endre til statisk???
         IRulesConfigurator rulesConfigurator = new Configuration.RulesConfigurator();
         
-        List<IRule> gameOneRules = rulesConfigurator.LoadRules(configPath, "ruleset2");
+        List<IRule> gameOneRules = rulesConfigurator.LoadRules(configPath, "ruleset1");
         GameLogic gameOneLogic = new GameLogic(gameOneRules);
 
-        for(int i = 1; i <= 1000; i++)
+        for(int i = 1; i <= 100; i++)
         {
             string response = gameOneLogic.ApplyRules(i);
             Console.WriteLine(response);

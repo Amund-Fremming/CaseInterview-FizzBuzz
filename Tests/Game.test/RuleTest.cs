@@ -2,8 +2,6 @@ using Xunit;
 using Game;
 using Interface;
 
-namespace GameTests;
-
 public class RuleTest
 {
     [Theory]
