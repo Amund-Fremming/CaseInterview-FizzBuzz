@@ -1,6 +1,6 @@
 using Interface;
-using Newtonsoft.Json.Linq;
 using Game;
+using Newtonsoft.Json.Linq;
 
 namespace Configuration;
 
