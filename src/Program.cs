@@ -2,32 +2,24 @@
 using Interface;
 using Configuration;
 
-public class Program
+
+const string configPath = "./Configuration/rules.json";
+IRulesConfigurator rulesConfigurator = new RulesConfigurator();
+
+void PlayGame(string ruleset, int start, int end, int step)
 {
-    static void Main(string[] args)
+    var rules = rulesConfigurator.LoadRules(configPath, ruleset);
+    var gameLogic = new GameLogic(rules);
+
+    for (int i = start; step > 0 ? i <= end : i >= end; i += step)
     {
-        const string configPath = "./Configuration/rules.json";
-
-        /* GAME ONE */
-        IRulesConfigurator rulesConfigurator = new RulesConfigurator();
-        
-        List<IRule> gameOneRules = rulesConfigurator.LoadRules(configPath, "ruleset1");
-        GameLogic gameOneLogic = new GameLogic(gameOneRules);
-
-        for(int i = 1; i <= 100; i++)
-        {
-            string response = gameOneLogic.ApplyRules(i);
-            Console.WriteLine(response);
-        }
-
-        /* GAME TWO */
-        List<IRule> gameTwoRules = rulesConfigurator.LoadRules(configPath, "ruleset2");
-        GameLogic gameTwoLogic = new GameLogic(gameTwoRules);
-   
-        for(int i = 100; i > 0; i--)
-        {
-            string response = gameTwoLogic.ApplyRules(i);
-            Console.WriteLine(response);
-        }
+        var response = gameLogic.ApplyRules(i);
+        Console.WriteLine(response);
     }
 }
+
+/* GAME 1 */
+PlayGame("ruleset1", 1, 100, 1);
+
+/* GAME 2 */
+PlayGame("ruleset2", 100, 1, -1);
