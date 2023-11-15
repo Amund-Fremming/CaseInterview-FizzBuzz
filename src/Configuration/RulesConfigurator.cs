@@ -6,23 +6,27 @@ namespace Configuration;
 
 public class RulesConfigurator : IRulesConfigurator
 {
-    public List<IRule> LoadRules(string configPath, string ruleset) {
-        List<IRule> rules = new List<IRule>();
+    public List<IRule> LoadRules(string configPath, string ruleset) 
+    {
+        var rules = new List<IRule>();
         
         try {
             string jsonString = File.ReadAllText(configPath);
+            var jObject = JObject.Parse(jsonString);
 
-            JObject jObject = JObject.Parse(jsonString);
-            JArray rulesArray = (JArray)jObject[ruleset]!;
-            
-            foreach(JObject rule in rulesArray)
+            if (jObject[ruleset] is JArray rulesArray)
             {
-                int divisor = rule.Value<int>("divisor");
-                string response = rule.Value<string>("response")!;
-                rules.Add(new Rule(divisor, response));
+                foreach(var rule in rulesArray.OfType<JObject>())
+                {
+                    var divisor = rule.Value<int>("divisor");
+                    var response = rule.Value<string>("response")!;
+                    rules.Add(new Rule(divisor, response));
+                }
             }
-        } catch (Exception e) {
-            Console.WriteLine($"Error: {e.Message}");
+        } catch (JsonReaderException e) {
+            Console.WriteLine($"JSON error: {e.Message}");
+        } catch (IOException e) {
+            Console.WriteLine($"File read error: {e.Message}");
         }
 
         return rules;

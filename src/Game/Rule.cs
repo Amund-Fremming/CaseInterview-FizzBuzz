@@ -12,8 +12,6 @@ public class Rule : IRule {
         this.Response = response;
     }
 
-    public bool DivisibleBy(int number) {
-        return number % Divisor == 0;
-    }
+    public bool DivisibleBy(int number) => number % Divisor == 0;
 
 }
