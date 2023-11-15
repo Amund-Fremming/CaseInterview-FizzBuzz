@@ -28,5 +28,11 @@ class Program
 
             Console.WriteLine(output);
         }
+
+        /*for(var i = 0; i < 100; i++)
+        {
+            string response = (i % 15 == 0 ? "FizzBuzz" : i % 3 == 0 ? "Fizz" : i % 5 == 0 ? "Buzz" : i.ToString());
+            Console.WriteLine(response);
+        }*/
     }
 }
