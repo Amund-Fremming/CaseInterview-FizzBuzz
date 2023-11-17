@@ -9,19 +9,17 @@ class Program
         {
             var output = "";
 
-            if(i % (3 * 5) == 0) 
+            if(i % 3 == 0) 
             {
-                output = "FizzBuzz";
+                output += "Fizz";
             }
-            else if(i % 3 == 0)
-            {
-                output = "Fizz";
-            }
-            else if(i % 5 == 0)
+            
+            if(i % 5 == 0)
             {
                 output = "Buzz";
             }
-            else
+
+            if(output == "")
             {
                 output = i.ToString();
             }
