@@ -16,7 +16,7 @@ class Program
             
             if(i % 5 == 0)
             {
-                output = "Buzz";
+                output += "Buzz";
             }
 
             if(output == "")
