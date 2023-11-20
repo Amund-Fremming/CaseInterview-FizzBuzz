@@ -8,7 +8,7 @@ public class GameLogic : IGameLogic {
 
     public GameLogic(List<IRule> rules)
     {
-        _rules = rules ?? throw new ArgumentNullException(nameof(rules));
+        _rules = rules ?? new List<IRule>();
     }
 
     public string ApplyRules(int number)
@@ -17,7 +17,7 @@ public class GameLogic : IGameLogic {
         {
             if(rule.DivisibleBy(number))
             {
-                return rule.Response;
+                return rule.OutputText;
             }
         }
 

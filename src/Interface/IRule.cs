@@ -7,7 +7,7 @@ namespace Interface;
 public interface IRule
 {
     int Divisor { get; }
-    string Response { get; }
+    string OutputText { get; }
 
     /// <summary>
     /// Determines whether a given number is divisible by the rule's divisor.
