@@ -1,45 +1,42 @@
-﻿using Game;
-using Interface;
+﻿using Microsoft.Extensions.Options;
+using Microsoft.Extensions.Configuration;
+using Game;
+using System.Text.Json;
 using Configuration;
 
-const string configPath = "./Configuration/rules.json";
-IRulesConfigurator rulesConfigurator = new RulesConfigurator();
-
-void PlayGame(string ruleset, int min, int max, bool forward)
+void PlayGame(GameRuleset gameRuleset)
 {
-    var rules = rulesConfigurator.LoadRules(configPath, ruleset);
-    var gameLogic = new GameLogic(rules);
+    GameLogic gameLogic = new GameLogic(gameRuleset.Rules);
 
-    IEnumerable<int> interval = Enumerable.Range(min, max);
+    bool descendingInterval = gameRuleset.IntervalStart > gameRuleset.IntervalEnd ? true : false;
 
-    if(!forward)
+    IEnumerable<int> interval = Enumerable.Range(
+        Math.Min(gameRuleset.IntervalStart, gameRuleset.IntervalEnd),
+        Math.Abs(gameRuleset.IntervalEnd - gameRuleset.IntervalStart) + 1
+    );
+
+    if(descendingInterval)
         interval = interval.Reverse();
-    
+
     foreach(int num in interval)
     {
-        var response = gameLogic.ApplyRules(num);
-        Console.WriteLine(response);
+        var outputText = gameLogic.ApplyRules(num);
+        Console.WriteLine(outputText);
     }
 }
 
-// GAME 1
-PlayGame("ruleset1", 1, 100, true);
+GameRuleset CreateGameRuleset(string rulesetKey) {
+    var configuration = new ConfigurationBuilder()
+        .SetBasePath(Directory.GetCurrentDirectory())
+        .AddJsonFile("Configuration/rules.json", optional: false, reloadOnChange: true)
+        .Build();
 
-// GAME 2
-PlayGame("ruleset2", 1, 100, false);
-
-/*
-int min = 1;
-int max = 100;
-bool forward = false;
-
-IEnumerable<int> nums = Enumerable.Range(min, max);
-
-if(!forward)
-    nums = nums.Reverse();
-
-foreach(var i in nums)
-{
-    Console.WriteLine(i);
+    return configuration.GetSection(rulesetKey).Get<GameRuleset>();
 }
-*/
+
+/* GAME 1 */
+PlayGame(CreateGameRuleset("fizzbuzz"));
+
+/* GAME 2 */
+PlayGame(CreateGameRuleset("jazzfuzz"));
+

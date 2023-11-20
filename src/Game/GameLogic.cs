@@ -4,24 +4,26 @@ namespace Game;
 
 public class GameLogic : IGameLogic {
 
-    private readonly List<IRule> _rules;
+    private readonly List<Rule> _rules;
 
-    public GameLogic(List<IRule> rules)
+    public GameLogic(List<Rule> rules)
     {
-        _rules = rules ?? new List<IRule>();
+        _rules = rules ?? new List<Rule>();
     }
 
     public string ApplyRules(int number)
     {
+
+        string? output = null; 
+
         foreach(var rule in _rules)
         {
             if(rule.DivisibleBy(number))
             {
-                return rule.OutputText;
+                output += rule.OutputText;
             }
         }
 
-        return number.ToString();
+        return output ?? number.ToString();
     }
-
 }
