@@ -1,7 +1,5 @@
-﻿using Microsoft.Extensions.Options;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Game;
-using System.Text.Json;
 using Configuration;
 
 void PlayGame(GameRuleset gameRuleset)
