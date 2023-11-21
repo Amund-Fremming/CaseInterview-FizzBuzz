@@ -1,18 +1,22 @@
 using Xunit;
 using Game;
-using Interface;
+using Configuration;
 
 public class GameLogicTest
 {
     [Fact]
     public void ApplyRules_ReturnsResponse()
     {
-        List<IRule> rules = new List<IRule> 
+        List<Rule> rules = new List<Rule> 
         { 
             new Rule(3, "Fizz"), 
             new Rule(5, "Buzz") 
         };
-        GameLogic gameLogic = new GameLogic(rules);
+
+        GameRuleset gameRuleset = new GameRuleset();
+        gameRuleset.Rules = rules;
+
+        GameLogic gameLogic = new GameLogic(gameRuleset.Rules);
         var result = gameLogic.ApplyRules(6); 
 
         Assert.Equal("Fizz", result);
@@ -21,12 +25,16 @@ public class GameLogicTest
     [Fact]
     public void ApplyRules_ReturnsNumber()
     {
-        List<IRule> rules = new List<IRule> 
+        List<Rule> rules = new List<Rule> 
         { 
             new Rule(3, "Fizz"), 
             new Rule(5, "Buzz") 
         };
-        GameLogic gameLogic = new GameLogic(rules);
+
+        GameRuleset gameRuleset = new GameRuleset();
+        gameRuleset.Rules = rules;
+
+        GameLogic gameLogic = new GameLogic(gameRuleset.Rules);
         var result = gameLogic.ApplyRules(7);
 
         Assert.Equal("7", result);
@@ -35,16 +43,10 @@ public class GameLogicTest
     [Fact]
     public void ApplyRules_EmptyList_ReturnsNumber()
     {
-        List<IRule> rules = new List<IRule>();
+        List<Rule> rules = new List<Rule>();
         GameLogic gameLogic = new GameLogic(rules);
         var result = gameLogic.ApplyRules(7);
 
         Assert.Equal("7", result);
-    }
-
-    [Fact]
-    public void Constructor_NoParams_Throws()
-    {
-        Assert.Throws<ArgumentNullException>(() => new GameLogic(null!));
     }
 }
