@@ -6,7 +6,7 @@ The CaseInterview-FizzBuzz application allows for the dynamic addition and modif
 
 ### Adding New Rules
 
-- Amend the `rules.json` file by inserting a new pair of "divisor" and "response" elements.
+- Amend the `rules.json` file by inserting a new pair of "divisor" and "response" elements for the rules, and IntervalStart and IntervalEnd for the interval to interate over.
 
 ### Creating New Games with Custom Rule Sets
 
