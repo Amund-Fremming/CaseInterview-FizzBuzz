@@ -1,9 +1,17 @@
 ﻿using Game;
 using Configuration;
+using Microsoft.Extensions.Configuration;
 
-void PlayGame(string rulesetKey)
+GameRuleset CreateGameRuleset(string rulesetKey) {
+    var configuration = new ConfigurationBuilder()
+        .AddJsonFile("Configuration/rules.json", optional: false, reloadOnChange: true)
+        .Build();
+
+    return configuration.GetSection(rulesetKey).Get<GameRuleset>() ?? throw new InvalidOperationException($"Configuration section {rulesetKey}");
+}
+
+void PlayGame(GameRuleset gameRuleset)
 {
-    GameRuleset gameRuleset = new GameRuleset().CreateGameRuleset(rulesetKey);
     GameLogic gameLogic = new GameLogic(gameRuleset.Rules);
 
     IEnumerable<int> interval = Enumerable.Range(
@@ -24,8 +32,8 @@ void PlayGame(string rulesetKey)
 }
 
 /* GAME 1 */
-PlayGame("fizzbuzz");
+PlayGame(CreateGameRuleset("fizzbuzz"));
 
 /* GAME 2 */
-PlayGame("jazzfuzz");
+PlayGame(CreateGameRuleset("jazzfuzz"));
 
