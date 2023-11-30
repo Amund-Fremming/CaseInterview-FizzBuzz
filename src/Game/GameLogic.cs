@@ -1,22 +1,22 @@
 using Interface;
-using Configuration;
 
 namespace Game;
 
-public class GameLogic {
+public class GameLogic : IGameLogic {
 
-    private readonly Games Games;
+    private readonly List<Rule> _rules;
 
-    public GameLogic(Games games)
+    public GameLogic(List<Rule> rules)
     {
-        Games = Games ?? throw new ArgumentNullException(nameof(games));
+        _rules = rules ?? new List<Rule>();
     }
 
-    private string ApplyRules(List<Rule> rules, int number)
+    public string ApplyRules(int number)
     {
+
         string? output = null; 
 
-        foreach(var rule in rules)
+        foreach(var rule in _rules)
         {
             if(rule.DivisibleBy(number))
             {
@@ -25,19 +25,5 @@ public class GameLogic {
         }
 
         return output ?? number.ToString();
-    }
-
-    public void PlayGames()
-    {
-        foreach(GameRuleset game in Games.GameCollection)
-        {
-            IEnumerable<int> interval = Enumerable.Range(0, game.NumberOfIterations);
-            if(game.Ascending) interval.Reverse();
-
-            foreach(int number in interval)
-            {
-                ApplyRules(game.Rules, number);
-            }
-        }
     }
 }
