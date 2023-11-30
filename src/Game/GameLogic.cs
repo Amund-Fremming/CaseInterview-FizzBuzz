@@ -1,14 +1,16 @@
 using Interface;
+using Configuration;
 
 namespace Game;
 
-public class GameLogic : IGameLogic {
+public class GameLogic {
 
-    private readonly List<Rule> _rules;
+    private readonly GameRuleset GameRuleset;
 
-    public GameLogic(List<Rule> rules)
+    public GameLogic(GameRuleset gameRuleset)
     {
-        _rules = rules ?? new List<Rule>();
+        GameRuleset = gameRuleset ?? throw new NullReferenceException(nameof(gameRuleset));
+        
     }
 
     public string ApplyRules(int number)
@@ -16,7 +18,7 @@ public class GameLogic : IGameLogic {
 
         string? output = null; 
 
-        foreach(var rule in _rules)
+        foreach(var rule in GameRuleset.Rules)
         {
             if(rule.DivisibleBy(number))
             {
@@ -25,5 +27,25 @@ public class GameLogic : IGameLogic {
         }
 
         return output ?? number.ToString();
+    }
+
+    private IEnumerable<int> CreateInterval()
+    {
+        IEnumerable<int> interval = Enumerable.Range(0, GameRuleset.NumberOfIterations);
+
+        if(!GameRuleset.IsAscending) interval.Reverse();
+
+        return interval;
+    }
+
+    public void PlayGame()
+    {
+        IEnumerable<int> interval = CreateInterval();
+        
+        foreach(int number in interval)
+        {
+            string output = ApplyRules(number);
+            Console.WriteLine(output);
+        }
     }
 }
