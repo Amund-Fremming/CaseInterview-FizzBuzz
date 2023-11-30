@@ -16,7 +16,7 @@ public class GameLogicTest
         GameRuleset gameRuleset = new GameRuleset();
         gameRuleset.Rules = rules;
 
-        GameLogic gameLogic = new GameLogic(gameRuleset.Rules);
+        GameLogic gameLogic = new GameLogic(gameRuleset);
         var result = gameLogic.ApplyRules(6); 
 
         Assert.Equal("Fizz", result);
@@ -34,7 +34,7 @@ public class GameLogicTest
         GameRuleset gameRuleset = new GameRuleset();
         gameRuleset.Rules = rules;
 
-        GameLogic gameLogic = new GameLogic(gameRuleset.Rules);
+        GameLogic gameLogic = new GameLogic(gameRuleset);
         var result = gameLogic.ApplyRules(7);
 
         Assert.Equal("7", result);
@@ -44,7 +44,11 @@ public class GameLogicTest
     public void ApplyRules_EmptyList_ReturnsNumber()
     {
         List<Rule> rules = new List<Rule>();
-        GameLogic gameLogic = new GameLogic(rules);
+        GameRuleset gameRuleset = new GameRuleset();
+        gameRuleset.Rules = rules;
+
+        GameLogic gameLogic = new GameLogic(gameRuleset);
+        
         var result = gameLogic.ApplyRules(7);
 
         Assert.Equal("7", result);
