@@ -7,12 +7,13 @@
       { "Divisor": 5, "OutputText": "Buzz" }
     ]
   },
-  "jazzfuzz": {
+  "jazzfuzzsgit": {
     "IntervalStart": 100,
     "IntervalEnd": 1,
     "Rules": [
       { "Divisor": 9, "OutputText": "Jazz" },
       { "Divisor": 4, "OutputText": "Fuzz" }
     ]
-  }
+  },
+  "hei": true
 }
