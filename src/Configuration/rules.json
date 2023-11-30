@@ -1,18 +1,22 @@
 {
-  "fizzbuzz": {
-    "IntervalStart": 1,
-    "IntervalEnd": 100,
-    "Rules": [
-      { "Divisor": 3, "OutputText": "Fizz" },
-      { "Divisor": 5, "OutputText": "Buzz" }
-    ]
-  },
-  "jazzfuzz": {
-    "IntervalStart": 100,
-    "IntervalEnd": 1,
-    "Rules": [
-      { "Divisor": 9, "OutputText": "Jazz" },
-      { "Divisor": 4, "OutputText": "Fuzz" }
-    ]
-  }
+  "gameruleset": [
+    {
+      "Name": "fizzbuzz",
+      "NumberOfIterations": 100,
+      "Ascending": true,
+      "Rules": [
+        { "Divisor": 3, "OutputText": "Fizz" },
+        { "Divisor": 5, "OutputText": "Buzz" }
+      ]
+    },
+    {
+      "name": "jazzfuzz",
+      "NumberOfIterations": 100,
+      "Ascending": false,
+      "Rules": [
+        { "Divisor": 9, "OutputText": "Jazz" },
+        { "Divisor": 4, "OutputText": "Fuzz" }
+      ]
+    }
+  ]
 }
